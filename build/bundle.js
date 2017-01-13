@@ -58,11 +58,11 @@
 
 	var _reactRedux = __webpack_require__(199);
 
-	var _reducers = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../reducers\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _reducers = __webpack_require__(216);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
-	var _Container = __webpack_require__(217);
+	var _Container = __webpack_require__(219);
 
 	var _Container2 = _interopRequireDefault(_Container);
 
@@ -23736,8 +23736,107 @@
 	}
 
 /***/ },
-/* 216 */,
+/* 216 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	exports.default = reducers;
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _ActionTypes = __webpack_require__(217);
+
+	var actionTypes = _interopRequireWildcard(_ActionTypes);
+
+	var _TodoTypes = __webpack_require__(218);
+
+	var todoTypes = _interopRequireWildcard(_TodoTypes);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	var initialState = {
+	  todoLists: [{
+	    type: todoTypes.UNFINISHTODO,
+	    text: 'this is an unfinish todo'
+	  }, {
+	    type: todoTypes.FINISHEDTODO,
+	    text: 'this is a finished todo'
+	  }, {
+	    type: todoTypes.UNFINISHTODO,
+	    text: 'click to redo this todo'
+	  }, {
+	    type: todoTypes.UNFINISHTODO,
+	    text: 'double click to delete this todo'
+	  }]
+	};
+
+	function reducers() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+	  var action = arguments[1];
+
+	  switch (action.type) {
+	    case actionTypes.NEWTODO:
+	      return _extends({}, state, {
+	        todoLists: [].concat(_toConsumableArray(state.todoLists), [{
+	          type: todoTypes.UNFINISHTODO,
+	          text: action.text
+	        }])
+	      });
+	    case actionTypes.FINISHTODO:
+	      state.todoLists[action.index].type = todoTypes.FINISHEDTODO;
+	      return _extends({}, state);
+	    case actionTypes.REDOTODO:
+	      state.todoLists[action.index].type = todoTypes.UNFINISHTODO;
+	      return _extends({}, state);
+	    case actionTypes.DELETETODO:
+	      state.todoLists.slice(action.index, 1);
+	      return _extends({}, state);
+	    default:
+	      return state;
+	  }
+	}
+
+/***/ },
 /* 217 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var NEWTODO = exports.NEWTODO = 'NEWTODO';
+	var FINISHTODO = exports.FINISHTODO = 'FINISHTODO';
+	var REDOTODO = exports.REDOTODO = 'REDOTODO';
+	var DELETETODO = exports.DELETETODO = 'DELETETODO';
+
+/***/ },
+/* 218 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var UNFINISHTODO = exports.UNFINISHTODO = 'UNFINISHTODO';
+	var FINISHEDTODO = exports.FINISHEDTODO = 'FINISHTODO';
+
+/***/ },
+/* 219 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23754,11 +23853,11 @@
 
 	var _reactRedux = __webpack_require__(199);
 
-	var _actions = __webpack_require__(218);
+	var _actions = __webpack_require__(220);
 
 	var actions = _interopRequireWildcard(_actions);
 
-	var _TodoLists = __webpack_require__(220);
+	var _TodoLists = __webpack_require__(221);
 
 	var _TodoLists2 = _interopRequireDefault(_TodoLists);
 
@@ -23811,7 +23910,7 @@
 	exports.default = Container;
 
 /***/ },
-/* 218 */
+/* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23824,7 +23923,7 @@
 	exports.redoTodo = redoTodo;
 	exports.deleteTodo = deleteTodo;
 
-	var _ActionTypes = __webpack_require__(219);
+	var _ActionTypes = __webpack_require__(217);
 
 	var types = _interopRequireWildcard(_ActionTypes);
 
@@ -23859,21 +23958,7 @@
 	}
 
 /***/ },
-/* 219 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var NEWTODO = exports.NEWTODO = 'NEWTODO';
-	var FINISHTODO = exports.FINISHTODO = 'FINISHTODO';
-	var REDOTODO = exports.REDOTODO = 'REDOTODO';
-	var DELETETODO = exports.DELETETODO = 'DELETETODO';
-
-/***/ },
-/* 220 */
+/* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23888,7 +23973,7 @@
 
 	var _react = __webpack_require__(1);
 
-	var _Todo = __webpack_require__(221);
+	var _Todo = __webpack_require__(222);
 
 	var _Todo2 = _interopRequireDefault(_Todo);
 
@@ -23949,7 +24034,7 @@
 	};
 
 /***/ },
-/* 221 */
+/* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23962,7 +24047,7 @@
 
 	var _react = __webpack_require__(1);
 
-	var _TodoTypes = __webpack_require__(222);
+	var _TodoTypes = __webpack_require__(218);
 
 	var _TodoTypes2 = _interopRequireDefault(_TodoTypes);
 
@@ -24009,18 +24094,6 @@
 	  text: _react.PropTypes.string.isRequired,
 	  completed: _react.PropTypes.bool.isRequired
 	};
-
-/***/ },
-/* 222 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var UNFINISHTODO = exports.UNFINISHTODO = 'UNFINISHTODO';
-	var FINISHEDTODO = exports.FINISHEDTODO = 'FINISHTODO';
 
 /***/ },
 /* 223 */
