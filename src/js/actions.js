@@ -7,23 +7,23 @@ export function newTodo(text){
   }
 }
 
-export function finishTodo(id){
+export function finishTodo(index){
   return {
     type:types.FINISHTODO,
-    id
+    index
   }
 }
 
-export function redoTodo(id){
+export function redoTodo(index){
   return {
     type:types.REDOTODO,
-    id
+    index
   }
 }
 
-export function deleteTodo(id){
+export function deleteTodo(index){
   return {
     type:types.DELETETODO,
-    id
+    index
   }
 }

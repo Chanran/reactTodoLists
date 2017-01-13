@@ -1,13 +1,14 @@
-import {Component} from 'react'
+import {Component,PropTypes} from 'react'
 
 export default class InputTodo extends Component{
 
   constructor(props,context){
     super(props,context)
+    this.handleKeyDown.bind(this)
     this.handleClick.bind(this)
   }
 
-  handleKeyDown(e){
+  addTodoKeydown(e){
     if(e.which === 13){
       e.preventDefault()
       const text = this.refs.input.value.trim()
@@ -18,7 +19,7 @@ export default class InputTodo extends Component{
     }
   }
 
-  handleClick(e){
+  addTodoClick(e){
     e.preventDefault()
     const text = this.refs.input.value.trim()
     if(text.length > 0){
@@ -30,9 +31,14 @@ export default class InputTodo extends Component{
   render(){
     return (
       <div className='inputContainer'>
-        <input className='addTodoInput' type='text' ref='input' autoFocus='true' placeholder='添加新的todo...' onKeyDown={this.handleKeyDown} />
-        <button className='submitBtn' type='button' onClick={this.handleClick}>添加</button>
+        <input className='addTodoInput' type='text' ref='input' autoFocus='true' placeholder='添加新的todo...' onKeyDown={this.addTodoKeydown} />
+        <button className='submitBtn' type='button' onClick={this.addTodoClick}>添加</button>
       </div>
     )
   }
 } 
+
+InputTodo.propTypes = {
+  addTodoClick:PropTypes.func.isRequired,
+  addTodoKeydown:PropTypes.func.isRequired
+}

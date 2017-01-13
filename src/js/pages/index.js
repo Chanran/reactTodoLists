@@ -4,15 +4,16 @@ import ReactDOM from 'react-dom'
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
 import reducer from '../reducers'
-import Routes from '../routes'
+import Container from '../containers/Container'
+//import Routes from '../routes'
 
 let store = createStore(reducer)
 
-import 'index.css'
+import '../../css/index.css'
 
 ReactDOM.render(
   <Provider store={store}>
-    {Routes}
+    <Container />
   </Provider>,
   document.getElementById('container')
 )
