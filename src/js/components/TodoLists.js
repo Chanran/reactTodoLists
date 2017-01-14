@@ -8,11 +8,12 @@ export default class TodoLists extends Component{
   }
 
   render(){
-    console.log(this.props)
+    let {todoLists} = this.props
+    console.log(todoLists)
     return(
       <div className="todoLists">
         <ul>
-            {this.props.TodoLists.map((todo,index) =>
+            {todoLists.map((todo,index) =>
               <Todo {...todo}
                     key={index}
                     onClick={this.props.onTodoClick(index)} />

@@ -28,7 +28,7 @@ export default function reducers(state = initialState,action){
     case actionTypes.NEWTODO:
       return Object.assign({},state,{
         todoLists:[
-          ...state.todos,
+          ...state.todoLists,
           {
             type:todoTypes.UNFINISHTODO,
             text:action.text
@@ -37,7 +37,7 @@ export default function reducers(state = initialState,action){
       })
     case actionTypes.FINISHTODO:
       return Object.assign({},state,{
-        todos:state.todos.map((todo,index) => {
+        todos:state.todoLists.map((todo,index) => {
           if(index === action.index){
             return Object.assign({},todo,{
               type:todoTypes.FINISHEDTODO
@@ -47,7 +47,7 @@ export default function reducers(state = initialState,action){
       })
     case actionTypes.REDOTODO:
       return Object.assign({},state,{
-        todos:state.todos.map((todo,index) => {
+        todos:state.todoLists.map((todo,index) => {
           if(index === action.index){
             return Object.assign({},todo,{
               type:todoTypes.UNFINISHTODO
@@ -57,7 +57,7 @@ export default function reducers(state = initialState,action){
       })
     case actionTypes.DELETETODO:
       return Object.assign({},state,{
-        todos:state.todos.filter((todo,index) => {
+        todos:state.todoLists.filter((todo,index) => {
           if(index === action.index){
             return false
           }

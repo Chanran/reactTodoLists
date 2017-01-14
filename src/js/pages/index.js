@@ -8,11 +8,7 @@ import reducers from '../reducers/index'
 import Container from '../containers/Container'
 //import Routes from '../routes'
 
-console.log(reducers)
-
 let store = createStore(reducers)
-
-
 
 import '../../css/index.css'
 

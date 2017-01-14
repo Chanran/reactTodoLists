@@ -7,7 +7,7 @@ import InputTodo from '../components/InputTodo'
 
 import '../../css/todoLists.css'
 
-export default class Container extends Component{
+class Container extends Component{
   constructor(props,context){
     super(props,context)
   }  
@@ -17,8 +17,23 @@ export default class Container extends Component{
     return(
       <div className='todoContainer'>
         <InputTodo addTodoClick={text => dispatch(actions.newTodo(text)) } addTodoKeydown={text => dispatch(actions.newTodo(text)) } />
-        <TodoLists onTodoClick={index => dispatch(actions.finishTodo(index))} TodoLists={todoLists} />
+        <TodoLists onTodoClick={index => dispatch(actions.finishTodo(index))} todoLists={todoLists} />
     </div>
     )
   }
 }
+
+Container.propTypes = {
+  todoLists:PropTypes.arrayOf(PropTypes.shape({
+    type:PropTypes.string.isRequired,
+    text:PropTypes.string.isRequired
+  }).isRequired).isRequired,
+}
+
+function select(state){
+  return {
+    todoLists:state.todoLists
+  }
+}
+
+export default connect(select)(Container)
