@@ -46,7 +46,6 @@ export default function reducers(state = initialState,action){
         })
       })
     case actionTypes.REDOTODO:
-      state.todoLists[action.index].type = todoTypes.UNFINISHTODO
       return Object.assign({},state,{
         todos:state.todos.map((todo,index) => {
           if(index === action.index){
@@ -57,10 +56,13 @@ export default function reducers(state = initialState,action){
         })
       })
     case actionTypes.DELETETODO:
-      state.todoLists.slice(action.index,1)
-      return {
-        ...state
-      }
+      return Object.assign({},state,{
+        todos:state.todos.filter((todo,index) => {
+          if(index === action.index){
+            return false
+          }
+        })
+      })
     default:
       return state
   }

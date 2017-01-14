@@ -38857,9 +38857,6 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 	exports.default = reducers;
 
 	var _react = __webpack_require__(1);
@@ -38919,7 +38916,6 @@
 	        })
 	      });
 	    case actionTypes.REDOTODO:
-	      state.todoLists[action.index].type = todoTypes.UNFINISHTODO;
 	      return Object.assign({}, state, {
 	        todos: state.todos.map(function (todo, index) {
 	          if (index === action.index) {
@@ -38930,8 +38926,13 @@
 	        })
 	      });
 	    case actionTypes.DELETETODO:
-	      state.todoLists.slice(action.index, 1);
-	      return _extends({}, state);
+	      return Object.assign({}, state, {
+	        todos: state.todos.filter(function (todo, index) {
+	          if (index === action.index) {
+	            return false;
+	          }
+	        })
+	      });
 	    default:
 	      return state;
 	  }
