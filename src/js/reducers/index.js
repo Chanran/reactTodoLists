@@ -9,7 +9,7 @@ const initialState = {
       text:'this is an unfinish todo'
     },
     {
-      type:todoTypes.FINISHEDTODO,
+      type:todoTypes.FINISHTODO,
       text:'this is a finished todo'
     },
     {
@@ -40,7 +40,7 @@ export default function reducers(state = initialState,action){
         todos:state.todoLists.map((todo,index) => {
           if(index === action.index){
             return Object.assign({},todo,{
-              type:todoTypes.FINISHEDTODO
+              type:todoTypes.FINISHTODO
             })
           }
         })

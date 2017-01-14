@@ -1,2 +1,2 @@
 export const UNFINISHTODO = 'UNFINISHTODO'
-export const FINISHEDTODO = 'FINISHTODO'
+export const FINISHTODO = 'FINISHTODO'

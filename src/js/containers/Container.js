@@ -13,11 +13,11 @@ class Container extends Component{
   }  
 
   render(){
-    const {dispatch,todoLists} = this.props
+    const {dispatch,todoLists,newTodo} = this.props
     return(
       <div className='todoContainer'>
-        <InputTodo addTodoClick={text => dispatch(actions.newTodo(text)) } addTodoKeydown={text => dispatch(actions.newTodo(text)) } />
-        <TodoLists onTodoClick={index => dispatch(actions.finishTodo(index))} todoLists={todoLists} />
+        <InputTodo newTodo={text => dispatch(actions.newTodo(text)) } />
+        <TodoLists finishTodo={index => dispatch(actions.finishTodo(index))} redoTodo={index => dispatch(actions.redoTodo(index))} todoLists={todoLists} />
     </div>
     )
   }

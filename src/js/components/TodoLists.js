@@ -4,7 +4,6 @@ import Todo from './Todo'
 export default class TodoLists extends Component{
   constructor(props, context) {
     super(props, context);
-    this.props.onTodoClick.bind(this)
   }
 
   render(){
@@ -16,7 +15,8 @@ export default class TodoLists extends Component{
             {todoLists.map((todo,index) =>
               <Todo {...todo}
                     key={index}
-                    onClick={this.props.onTodoClick(index)} />
+                    finishTodo={(index) => this.props.finishTodo(index)}
+                    redoTodo={(index) => this.props.redoTodo(index)} />
             )}
         </ul>
       </div>
@@ -25,7 +25,7 @@ export default class TodoLists extends Component{
 }
 
 TodoLists.propTyps = {
-  onTodoClick:PropTypes.func.isRequired,
+  finishTodo:PropTypes.func.isRequired,
   todos:PropTypes.arrayOf(PropTypes.shape({
     type:PropTypes.string.isRequired,
     text:PropTypes.string.isRequired

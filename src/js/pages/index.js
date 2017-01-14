@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {createStore} from 'redux'
+import {createStore,compose} from 'redux'
 import {Provider} from 'react-redux'
 
 import Devtools from '../containers/DevTools'
@@ -8,7 +8,11 @@ import reducers from '../reducers/index'
 import Container from '../containers/Container'
 //import Routes from '../routes'
 
-let store = createStore(reducers)
+const enhancer = compose(
+  Devtools.instrument()
+);
+
+let store = createStore(reducers,enhancer)
 
 import '../../css/index.css'
 
