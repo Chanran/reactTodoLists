@@ -6,18 +6,20 @@ export default class Todo extends Component{
 
   handleFinishTodo(e){
     e.preventDefault()
-    const index = e.target.key
-    console.log(index)
     if(this.props.type === todoTypes.UNFINISHTODO){
-      this.props.finishTodo(index)
+      this.props.finishTodo(this.props.index)
     }else if (this.props.type === todoTypes.FINISHTODO){
-      this.props.redoTodo(index)
+      this.props.redoTodo(this.props.index)
     }
   }
 
   render(){
     return (
-      <li onClick={(e) => this.handleFinishTodo(e)}>
+      <li onClick={(e) => this.handleFinishTodo(e,this)} 
+          style={{
+            textDecoration:this.props.type === todoTypes.FINISHTODO?'line-through':'none',
+            cursor:'pointer'
+          }}>
           {this.props.text}
       </li>
     )

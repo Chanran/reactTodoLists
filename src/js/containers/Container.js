@@ -13,7 +13,7 @@ class Container extends Component{
   }  
 
   render(){
-    const {dispatch,todoLists,newTodo} = this.props
+    const {dispatch,todoLists} = this.props
     return(
       <div className='todoContainer'>
         <InputTodo newTodo={text => dispatch(actions.newTodo(text)) } />

@@ -8,13 +8,13 @@ export default class TodoLists extends Component{
 
   render(){
     let {todoLists} = this.props
-    console.log(todoLists)
     return(
       <div className="todoLists">
         <ul>
             {todoLists.map((todo,index) =>
               <Todo {...todo}
                     key={index}
+                    index={index}
                     finishTodo={(index) => this.props.finishTodo(index)}
                     redoTodo={(index) => this.props.redoTodo(index)} />
             )}

@@ -36,31 +36,44 @@ export default function reducers(state = initialState,action){
         ]
       })
     case actionTypes.FINISHTODO:
-      return Object.assign({},state,{
-        todos:state.todoLists.map((todo,index) => {
+      console.log({
+        todoLists:state.todoLists.map((todo,index) => {
           if(index === action.index){
             return Object.assign({},todo,{
               type:todoTypes.FINISHTODO
             })
           }
+          return todo
+        })
+      })
+      return Object.assign({},state,{
+        todoLists:state.todoLists.map((todo,index) => {
+          if(index === action.index){
+            return Object.assign({},todo,{
+              type:todoTypes.FINISHTODO
+            })
+          }
+          return todo
         })
       })
     case actionTypes.REDOTODO:
       return Object.assign({},state,{
-        todos:state.todoLists.map((todo,index) => {
+        todoLists:state.todoLists.map((todo,index) => {
           if(index === action.index){
             return Object.assign({},todo,{
               type:todoTypes.UNFINISHTODO
             })
           }
+          return todo
         })
       })
     case actionTypes.DELETETODO:
       return Object.assign({},state,{
-        todos:state.todoLists.filter((todo,index) => {
+        todoLists:state.todoLists.filter((todo,index) => {
           if(index === action.index){
             return false
           }
+          return true
         })
       })
     default:

@@ -38913,31 +38913,44 @@
 	        }])
 	      });
 	    case actionTypes.FINISHTODO:
-	      return Object.assign({}, state, {
-	        todos: state.todoLists.map(function (todo, index) {
+	      console.log({
+	        todoLists: state.todoLists.map(function (todo, index) {
 	          if (index === action.index) {
 	            return Object.assign({}, todo, {
 	              type: todoTypes.FINISHTODO
 	            });
 	          }
+	          return todo;
+	        })
+	      });
+	      return Object.assign({}, state, {
+	        todoLists: state.todoLists.map(function (todo, index) {
+	          if (index === action.index) {
+	            return Object.assign({}, todo, {
+	              type: todoTypes.FINISHTODO
+	            });
+	          }
+	          return todo;
 	        })
 	      });
 	    case actionTypes.REDOTODO:
 	      return Object.assign({}, state, {
-	        todos: state.todoLists.map(function (todo, index) {
+	        todoLists: state.todoLists.map(function (todo, index) {
 	          if (index === action.index) {
 	            return Object.assign({}, todo, {
 	              type: todoTypes.UNFINISHTODO
 	            });
 	          }
+	          return todo;
 	        })
 	      });
 	    case actionTypes.DELETETODO:
 	      return Object.assign({}, state, {
-	        todos: state.todoLists.filter(function (todo, index) {
+	        todoLists: state.todoLists.filter(function (todo, index) {
 	          if (index === action.index) {
 	            return false;
 	          }
+	          return true;
 	        })
 	      });
 	    default:
@@ -39027,8 +39040,7 @@
 	    value: function render() {
 	      var _props = this.props,
 	          dispatch = _props.dispatch,
-	          todoLists = _props.todoLists,
-	          newTodo = _props.newTodo;
+	          todoLists = _props.todoLists;
 
 	      return _react2.default.createElement(
 	        'div',
@@ -39157,7 +39169,6 @@
 
 	      var todoLists = this.props.todoLists;
 
-	      console.log(todoLists);
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'todoLists' },
@@ -39167,6 +39178,7 @@
 	          todoLists.map(function (todo, index) {
 	            return _react2.default.createElement(_Todo2.default, _extends({}, todo, {
 	              key: index,
+	              index: index,
 	              finishTodo: function finishTodo(index) {
 	                return _this2.props.finishTodo(index);
 	              },
@@ -39236,12 +39248,10 @@
 	    key: 'handleFinishTodo',
 	    value: function handleFinishTodo(e) {
 	      e.preventDefault();
-	      var index = e.target.key;
-	      console.log(index);
 	      if (this.props.type === todoTypes.UNFINISHTODO) {
-	        this.props.finishTodo(index);
+	        this.props.finishTodo(this.props.index);
 	      } else if (this.props.type === todoTypes.FINISHTODO) {
-	        this.props.redoTodo(index);
+	        this.props.redoTodo(this.props.index);
 	      }
 	    }
 	  }, {
@@ -39252,7 +39262,11 @@
 	      return _react2.default.createElement(
 	        'li',
 	        { onClick: function onClick(e) {
-	            return _this2.handleFinishTodo(e);
+	            return _this2.handleFinishTodo(e, _this2);
+	          },
+	          style: {
+	            textDecoration: this.props.type === todoTypes.FINISHTODO ? 'line-through' : 'none',
+	            cursor: 'pointer'
 	          } },
 	        this.props.text
 	      );
