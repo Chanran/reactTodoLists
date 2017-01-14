@@ -76,9 +76,9 @@
 
 	//import Routes from '../routes'
 
-	var store = (0, _redux.createStore)(_index2.default);
+	console.log(_index2.default);
 
-	console.log(store);
+	var store = (0, _redux.createStore)(_index2.default);
 
 	_reactDom2.default.render(_react2.default.createElement(
 	  _reactRedux.Provider,
@@ -39018,7 +39018,9 @@
 	  _createClass(Container, [{
 	    key: 'render',
 	    value: function render() {
-	      var dispatch = this.props.dispatch;
+	      var _props = this.props,
+	          dispatch = _props.dispatch,
+	          todoLists = _props.todoLists;
 
 	      return _react2.default.createElement(
 	        'div',
@@ -39030,7 +39032,7 @@
 	          } }),
 	        _react2.default.createElement(_TodoLists2.default, { onTodoClick: function onTodoClick(index) {
 	            return dispatch(actions.finishTodo(index));
-	          }, TodoLists: this.props.TodoLists })
+	          }, TodoLists: todoLists })
 	      );
 	    }
 	  }]);
@@ -39135,6 +39137,7 @@
 	    value: function render() {
 	      var _this2 = this;
 
+	      console.log(this.props);
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'todoLists' },
@@ -39183,7 +39186,9 @@
 
 	var _TodoTypes = __webpack_require__(576);
 
-	var _TodoTypes2 = _interopRequireDefault(_TodoTypes);
+	var todoTypes = _interopRequireWildcard(_TodoTypes);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -39209,8 +39214,8 @@
 	        'li',
 	        { onClick: this.props.onClick,
 	          style: {
-	            textDecoration: this.props.type === _TodoTypes2.default.FINISHTODO ? 'line-through' : 'none',
-	            cursor: this.props.type === _TodoTypes2.default.FINISHTODO ? 'default' : 'pointer'
+	            textDecoration: this.props.type === todoTypes.FINISHTODO ? 'line-through' : 'none',
+	            cursor: this.props.type === todoTypes.FINISHTODO ? 'default' : 'pointer'
 	          } },
 	        this.props.text
 	      );

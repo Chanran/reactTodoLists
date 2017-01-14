@@ -1,6 +1,6 @@
 import React,{Component,PropTypes} from 'react'
 
-import todoTypes from '../constants/TodoTypes'
+import * as todoTypes from '../constants/TodoTypes'
 
 export default class Todo extends Component{
   render(){
