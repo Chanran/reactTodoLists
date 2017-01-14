@@ -1,4 +1,4 @@
-import {Component,PropTypes} from 'react'
+import React,{Component,PropTypes} from 'react'
 import Todo from './Todo'
 
 export default class TodoLists extends Component{
@@ -24,9 +24,8 @@ export default class TodoLists extends Component{
 
 TodoLists.propTyps = {
   onTodoClick:PropTypes.func.isRequired,
-  todos:PropTypes.arrayOf(PropTypes.shapre({
-    id:PropTypes.number.isRequired,
+  todos:PropTypes.arrayOf(PropTypes.shape({
     type:PropTypes.string.isRequired,
-    completed:PropTypes.bool.isRequired
+    text:PropTypes.string.isRequired
   }))
 }

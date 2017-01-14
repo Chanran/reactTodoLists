@@ -13,12 +13,11 @@ export default class Container extends Component{
   }  
 
   render(){
-
     const {dispatch} = this.props
     return(
       <div className='todoContainer'>
-        <InputTodo onAddClick={text => dispatch(actions.newTodo(text)) } />
-        <TodoLists onTodoClick={index => dispatch(actions.finishTodo(index))} />
+        <InputTodo addTodoClick={text => dispatch(actions.newTodo(text)) } addTodoKeydown={text => dispatch(actions.newTodo(text)) } />
+        <TodoLists onTodoClick={index => dispatch(actions.finishTodo(index))} TodoLists={this.props.TodoLists} />
     </div>
     )
   }

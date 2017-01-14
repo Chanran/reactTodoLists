@@ -26,23 +26,36 @@ const initialState = {
 export default function reducers(state = initialState,action){
   switch(action.type){
     case actionTypes.NEWTODO:
-      return {
-        ...state,
-        todoLists:[...state.todoLists,{
-          type:todoTypes.UNFINISHTODO,
-          text:action.text
-        }]
-      }
+      return Object.assign({},state,{
+        todoLists:[
+          ...state.todos,
+          {
+            type:todoTypes.UNFINISHTODO,
+            text:action.text
+          }
+        ]
+      })
     case actionTypes.FINISHTODO:
-      state.todoLists[action.index].type = todoTypes.FINISHEDTODO
-      return {
-        ...state
-      }
+      return Object.assign({},state,{
+        todos:state.todos.map((todo,index) => {
+          if(index === action.index){
+            return Object.assign({},todo,{
+              type:todoTypes.FINISHEDTODO
+            })
+          }
+        })
+      })
     case actionTypes.REDOTODO:
       state.todoLists[action.index].type = todoTypes.UNFINISHTODO
-      return {
-        ...state
-      }
+      return Object.assign({},state,{
+        todos:state.todos.map((todo,index) => {
+          if(index === action.index){
+            return Object.assign({},todo,{
+              type:todoTypes.UNFINISHTODO
+            })
+          }
+        })
+      })
     case actionTypes.DELETETODO:
       state.todoLists.slice(action.index,1)
       return {

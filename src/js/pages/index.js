@@ -1,19 +1,25 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
-import reducer from '../reducers'
+
+import Devtools from '../containers/DevTools'
+import reducers from '../reducers/index'
 import Container from '../containers/Container'
 //import Routes from '../routes'
 
-let store = createStore(reducer)
+let store = createStore(reducers)
 
 import '../../css/index.css'
 
+console.log(store)
+
 ReactDOM.render(
   <Provider store={store}>
-    <Container />
+    <div>
+      <Container />
+      <Devtools />
+    </div>
   </Provider>,
   document.getElementById('container')
 )

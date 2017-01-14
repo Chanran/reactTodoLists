@@ -1,11 +1,11 @@
-import {Component,PropTypes} from 'react'
+import React,{Component,PropTypes} from 'react'
 
 export default class InputTodo extends Component{
 
   constructor(props,context){
     super(props,context)
-    this.handleKeyDown.bind(this)
-    this.handleClick.bind(this)
+    this.addTodoKeydown.bind(this)
+    this.addTodoClick.bind(this)
   }
 
   addTodoKeydown(e){
@@ -32,7 +32,7 @@ export default class InputTodo extends Component{
     return (
       <div className='inputContainer'>
         <input className='addTodoInput' type='text' ref='input' autoFocus='true' placeholder='添加新的todo...' onKeyDown={this.addTodoKeydown} />
-        <button className='submitBtn' type='button' onClick={this.addTodoClick}>添加</button>
+        <button className='submitBtn' type='button' onClick={this.addTodoAction}>添加</button>
       </div>
     )
   }
