@@ -1,15 +1,18 @@
 const webpack = require("webpack");
-const autoprefixer = require("autoprefixer");
+//const autoprefixer = require("autoprefixer");
 
 module.exports = {
   //页面入口
-  entry:{
-    index:"./src/js/pages/index.js"
-  },
+  entry:[
+    'webpack-dev-server/client?http://localhost:3000',
+    'webpack/hot/only-dev-server',
+    './src/js/pages/index.js'
+  ],
   //入口文件输出配置
   output:{
-      path:'./build',
-      filename:'bundle.js'
+      path:__dirname+'/build/',
+      filename:'bundle.js',
+      publicPath:'/build/'
   },
   module:{
     //加载器
@@ -22,15 +25,11 @@ module.exports = {
       {
         test:/\.js$/,
         exclude:/node_modules/,
-        loader:'babel',
-        query:{
-          presets:['react','es2015','stage-0']
-        }
+        loaders:['react-hot','babel'],
       }
     ]
   },
-  plugin:[
-    autoprefixer, //自动补全css3浏览器前缀
+  plugins:[
     new webpack.HotModuleReplacementPlugin() //webpack热加载插件
   ],
   resolve:{
