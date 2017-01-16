@@ -18,7 +18,6 @@ export default class InputTodo extends Component{
   }
 
   addTodoClick(e){
-    console.log(this)
     e.preventDefault()
     const text = this.refs.input.value.trim()
     if(text.length > 0){
@@ -35,7 +34,7 @@ export default class InputTodo extends Component{
       </div>
     )
   }
-} 
+}   
 
 InputTodo.propTypes = {
   newTodo:PropTypes.func.isRequired

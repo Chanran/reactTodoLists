@@ -6,7 +6,7 @@ import {Provider} from 'react-redux'
 import Devtools from '../containers/DevTools'
 import reducers from '../reducers/index'
 import Container from '../containers/Container'
-//import Routes from '../routes'
+import Routes from '../routes'
 
 const enhancer = compose(
   Devtools.instrument()
@@ -19,7 +19,7 @@ import '../../css/index.css'
 ReactDOM.render(
   <Provider store={store}>
     <div>
-      <Container />
+      <Routes />
       <Devtools />
     </div>
   </Provider>,

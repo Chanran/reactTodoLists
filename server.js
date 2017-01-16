@@ -1,16 +1,11 @@
-var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
-var config = require('./webpack.config');
-var compiler = webpack(config);
+const proxy = require('proxy-middleware')
+const url = require('url')
+const express = require('express')
+const app = express()
 
-new WebpackDevServer(compiler, {
-  publicPath: config.output.publicPath,
-  hot: true,
-  historyApiFallback: true
-}).listen(3000, 'localhost', function (err, result) {
-  if (err) {
-    return console.log(err);
-  }
+app.get('/',function(req,res){
+  res.sendFile(__dirname+'/src/html/index.html');
+})
+app.listen(3001)
+app.use('/build',proxy(url.parse('http://localhost:3000/build')))
 
-  console.log('Listening at http://localhost:3000/')
-});
