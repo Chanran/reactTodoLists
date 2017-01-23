@@ -2,9 +2,7 @@ import React,{Component,PropTypes} from 'react'
 
 import * as actions from '../actions'
 
-import '../../css/todoLists.css'
-
-class Container extends Component{
+export default class LoginPage extends Component{
   constructor(props,context){
     super(props,context)
   }  

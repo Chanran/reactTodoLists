@@ -1,13 +1,15 @@
 import React,{Component,PropTypes} from 'react'
 import {connect} from 'react-redux'
 
+import AppBar from 'material-ui/AppBar'
+
 import * as actions from '../actions'
 import TodoLists from '../components/TodoLists'
 import InputTodo from '../components/InputTodo'
 
 import '../../css/todoLists.css'
 
-class Container extends Component{
+class IndexPage extends Component{
   constructor(props,context){
     super(props,context)
   }  
@@ -23,7 +25,7 @@ class Container extends Component{
   }
 }
 
-Container.propTypes = {
+IndexPage.propTypes = {
   todoLists:PropTypes.arrayOf(PropTypes.shape({
     type:PropTypes.string.isRequired,
     text:PropTypes.string.isRequired
@@ -36,4 +38,4 @@ function select(state){
   }
 }
 
-export default connect(select)(Container)
+export default connect(select)(IndexPage)

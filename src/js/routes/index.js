@@ -1,7 +1,9 @@
 import React,{Component} from 'react'
-import {Router,Route,browserHistory} from 'react-router'
+import {Router,Route,hashHistory} from 'react-router'
 
-import Container from '../containers/Container'
+import NavigateBar from '../containers/NavigateBar.js'
+import IndexPage from '../pages/IndexPage'
+import LoginPage from '../pages/LoginPage'
 
 export default class Routes extends Component{
   constructor(props, context) {
@@ -10,8 +12,9 @@ export default class Routes extends Component{
   
   render(){
     return(
-      <Router history={browserHistory} >
-        <Route path='/' component={Container} />
+      <Router history={hashHistory}>
+        <Route path='/index' component={IndexPage} />
+        <Route path='/login' component={LoginPage} />
       </Router>
     )
   }

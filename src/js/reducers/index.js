@@ -36,16 +36,6 @@ export default function reducers(state = initialState,action){
         ]
       })
     case actionTypes.FINISHTODO:
-      console.log({
-        todoLists:state.todoLists.map((todo,index) => {
-          if(index === action.index){
-            return Object.assign({},todo,{
-              type:todoTypes.FINISHTODO
-            })
-          }
-          return todo
-        })
-      })
       return Object.assign({},state,{
         todoLists:state.todoLists.map((todo,index) => {
           if(index === action.index){
