@@ -4,9 +4,9 @@ const path = require('path')
 const express = require('express')
 const app = express()
 
-app.use(express.static(__dirname+'/src'))
+app.use(express.static(__dirname+'/src/public'))
 
-app.get('/',function(req,res){
+app.get('/',(req,res) => {
   res.sendFile(path.resolve(__dirname,'src/html','index.html'));
 })
 app.listen(3001)

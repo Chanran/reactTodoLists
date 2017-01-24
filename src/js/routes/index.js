@@ -1,7 +1,6 @@
 import React,{Component} from 'react'
 import {Router,Route,hashHistory} from 'react-router'
 
-import NavigateBar from '../containers/NavigateBar.js'
 import IndexPage from '../pages/IndexPage'
 import LoginPage from '../pages/LoginPage'
 
