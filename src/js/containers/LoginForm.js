@@ -3,6 +3,8 @@ import React,{Component,PropTypes} from 'react'
 import Avatar from '../components/Avatar'
 import UsernameInput from '../components/UsernameInput'
 import PasswordInput from '../components/PasswordInput'
+import LoginTips from '../components/LoginTips'
+import LoginButtons from '../components/LoginButtons'
 
 export default class LoginForm extends Component{
   constructor(props, context) {
@@ -25,6 +27,8 @@ export default class LoginForm extends Component{
         <Avatar />
         <UsernameInput />
         <PasswordInput />
+        <LoginTips />
+        <LoginButtons />
       </div>
     )
   }
