@@ -13,8 +13,11 @@ export default class LoginForm extends Component{
     let styles = {
       root:{
         display:'flex',
-        flexDirection:'row',
-        alignItems:'center'
+        flexDirection:'column',
+        alignItems:'center',
+        margin:'50px 20px',
+        borderRadius:'10px',
+        background:'rgba(255,255,255,1)',
       }
     }
     return (

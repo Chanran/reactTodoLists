@@ -8,8 +8,13 @@ export default class PasswordInput extends Component{
   }
   
   render() {
+    let styles = {
+      root:{
+        margin:'0 auto 20px'
+      }
+    }
     return (
-      <div>
+      <div style={styles.root}>
         <TextField hintText='6~16位' floatingLabelText='请输入密码' type="password" />
       </div>
     )

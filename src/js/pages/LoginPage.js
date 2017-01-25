@@ -16,6 +16,7 @@ export default class LoginPage extends Component{
 
     let styles = {
       root:{
+        border:'1px solid rgba(255,255,255,0)',
         height:'100%',
         width:'100%',
         background:'url('+bgImg+') 100% 100%',
