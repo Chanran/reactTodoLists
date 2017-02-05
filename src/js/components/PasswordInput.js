@@ -14,9 +14,11 @@ export default class PasswordInput extends Component{
       }
     }
     return (
-      <div style={styles.root}>
-        <TextField hintText='6~16位' floatingLabelText='请输入密码' type="password" />
-      </div>
+      <TextField ref='password'
+                 hintText='6~16位' 
+                 floatingLabelText='请输入密码' 
+                 type="password"
+                 style={styles.root} />
     )
   }
 }

@@ -1,8 +1,10 @@
 import React from 'react'
+import { combineReducers } from 'redux'
+
 import * as actionTypes from '../constants/ActionTypes'
 import * as todoTypes from '../constants/TodoTypes'
 
-const initialState = {
+const todoListsInitialState = {
   todoLists:[
     {
       type:todoTypes.UNFINISHTODO,
@@ -23,7 +25,7 @@ const initialState = {
   ]
 }
 
-export default function reducers(state = initialState,action){
+function todoListsReducer(state = todoListsInitialState,action){
   switch(action.type){
     case actionTypes.NEWTODO:
       return Object.assign({},state,{
@@ -70,3 +72,36 @@ export default function reducers(state = initialState,action){
       return state
   }
 }
+
+const loginInitialState = {
+  login:{
+    username:'',
+    password:''
+  }
+}
+
+function loginReducer(state = loginInitialState,action){
+  switch(action.type){
+    case actionTypes.CHANGEUSERNAME:
+      return {
+        login:Object.assign({},state.login,{
+          username:action.username
+        })
+      }
+    case actionTypes.CHANGEPASSWORD:
+      return {
+        login:Object.assign({},state.password,{
+          password:action.password
+        })
+      }
+    default:
+      return state
+  }
+}
+
+const todoApp = combineReducers({
+  todoListsReducer,
+  loginReducer
+})
+
+export default todoApp

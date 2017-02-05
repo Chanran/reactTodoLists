@@ -19,7 +19,9 @@ class IndexPage extends Component{
     return(
       <div className='todoContainer'>
         <InputTodo newTodo={text => dispatch(actions.newTodo(text)) } />
-        <TodoLists finishTodo={index => dispatch(actions.finishTodo(index))} redoTodo={index => dispatch(actions.redoTodo(index))} todoLists={todoLists} />
+        <TodoLists finishTodo={index => dispatch(actions.finishTodo(index))} 
+                   redoTodo={index => dispatch(actions.redoTodo(index))}
+                   todoLists={todoLists} />
     </div>
     )
   }

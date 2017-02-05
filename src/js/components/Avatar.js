@@ -14,7 +14,8 @@ export default class Avatar extends Component{
     }
     return( 
       <div style={styles.root}>
-        <img src='./img/avatar.jpg' alt='夏目和猫咪先生' />
+        <img src='./img/avatar.jpg' 
+             alt='夏目和猫咪先生' />
       </div>
     )
   }

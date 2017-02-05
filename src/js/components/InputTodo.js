@@ -29,8 +29,15 @@ export default class InputTodo extends Component{
   render(){
     return (
       <div className='inputContainer'>
-        <input className='addTodoInput' type='text' ref='input' autoFocus='true' placeholder='添加新的todo...' onKeyDown={(e) => this.addTodoKeydown(e)} />
-        <button className='submitBtn' type='button' onClick={(e) => this.addTodoClick(e)}>添加</button>
+        <input className='addTodoInput' 
+               type='text'
+               ref='input'
+               autoFocus='true' 
+               placeholder='添加新的todo...' 
+               onKeyDown={(e) => this.addTodoKeydown(e)} />
+        <button className='submitBtn'
+                type='button' 
+                onClick={(e) => this.addTodoClick(e)}>添加</button>
       </div>
     )
   }

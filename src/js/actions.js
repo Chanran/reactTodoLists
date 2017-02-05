@@ -27,3 +27,17 @@ export function deleteTodo(index){
     index
   }
 }
+
+export function changeUsername(username){
+  return {
+    type:types.CHANGEUSERNAME,
+    username
+  }
+}
+
+export function changePassword(password){
+  return {
+    type:types.CHANGEPASSWORD,
+    password
+  }
+}

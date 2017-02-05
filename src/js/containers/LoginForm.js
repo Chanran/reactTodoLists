@@ -1,4 +1,7 @@
 import React,{Component,PropTypes} from 'react'
+import ReactDOM from 'react-dom'
+
+import actions from '../actions'
 
 import Avatar from '../components/Avatar'
 import UsernameInput from '../components/UsernameInput'
@@ -9,9 +12,15 @@ import LoginButtons from '../components/LoginButtons'
 export default class LoginForm extends Component{
   constructor(props, context) {
     super(props, context)
+    this.login = this.login.bind(this)
+  }
+
+  login(){
+    console.log(ReactDOM.findDOMNode(this.usernameInput))
   }
 
   render() {
+    const {dispatch} = this.props
     let styles = {
       root:{
         display:'flex',
@@ -25,10 +34,10 @@ export default class LoginForm extends Component{
     return (
       <div style={styles.root}>
         <Avatar />
-        <UsernameInput />
-        <PasswordInput />
+        <UsernameInput changeUsername={ username => dispatch(actions.changeUsername(username)) } />
+        <PasswordInput changePassword={ password => dispatch(actions.changePassword(password)) } />
         <LoginTips />
-        <LoginButtons />
+        <LoginButtons login={this.login} />
       </div>
     )
   }
