@@ -1,18 +1,25 @@
 import React,{Component,PropTypes} from 'react'
+import { connect } from 'react-redux'
 
 import * as actions from '../actions'
-import LoginForm from '../containers/LoginForm.js'
+import LoginForm from '../components/LoginForm.js'
 
 import '../../css/index.css'
 
 class LoginPage extends Component{
   constructor(props,context){
     super(props,context)
+    this.login = this.login.bind(this)
   }  
 
-  render(){
-    let bgImg = './img/bg.jpg'
+  login(){
 
+  }
+
+  render(){
+    const {dispatch} = this.props
+
+    let bgImg = './img/bg.jpg'
     let styles = {
       root:{
         border:'1px solid rgba(255,255,255,0)',
@@ -24,15 +31,17 @@ class LoginPage extends Component{
     }
     return(
       <div style={styles.root}>
-        <LoginForm />
+        <LoginForm changeUsername={ (username) => dispatch(actions.changeUsername(username)) }
+                   changePassword={ (password) => dispatch(actions.changePassword(password)) }
+                   login={this.login} />
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => {
+function mapStateToProps(state){
   return {
-    
+    login:state.login
   }
 }
 

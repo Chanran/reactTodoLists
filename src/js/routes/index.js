@@ -1,8 +1,8 @@
 import React,{Component} from 'react'
 import {Router,Route,hashHistory} from 'react-router'
 
-import IndexPage from '../pages/IndexPage'
-import LoginPage from '../pages/LoginPage'
+import IndexPage from '../containers/IndexPage'
+import LoginPage from '../containers/LoginPage'
 
 export default class Routes extends Component{
   constructor(props, context) {

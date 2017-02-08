@@ -1,5 +1,5 @@
 import React,{Component,PropTypes} from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 import * as actions from '../actions'
 import TodoLists from '../components/TodoLists'
@@ -32,10 +32,10 @@ IndexPage.propTypes = {
   }).isRequired).isRequired,
 }
 
-function select(state){
+function mapStateToProps(state){
   return {
     todoLists:state.todoLists
   }
 }
 
-export default connect(select)(IndexPage)
+export default connect(mapStateToProps)(IndexPage)

@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom'
 import {Provider} from 'react-redux'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
-import IndexPage from './pages/IndexPage'
-import Routes from './routes'
-import store from './store/index'
 import Devtools from './containers/DevTools'
+import IndexPage from './containers/IndexPage'
+import Routes from './routes'
+import store from './store'
+
 
 import '../css/index.css'
 

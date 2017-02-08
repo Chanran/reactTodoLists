@@ -72,17 +72,13 @@ const loginInitialState = {
 function login(state = loginInitialState,action){
   switch(action.type){
     case actionTypes.CHANGEUSERNAME:
-      return {
-        login:Object.assign({},state.login,{
+      return Object.assign({},state,{
           username:action.username
         })
-      }
     case actionTypes.CHANGEPASSWORD:
-      return {
-        login:Object.assign({},state.password,{
+      return Object.assign({},state,{
           password:action.password
         })
-      }
     default:
       return state
   }
