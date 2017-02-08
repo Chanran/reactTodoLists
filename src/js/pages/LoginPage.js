@@ -5,13 +5,12 @@ import LoginForm from '../containers/LoginForm.js'
 
 import '../../css/index.css'
 
-export default class LoginPage extends Component{
+class LoginPage extends Component{
   constructor(props,context){
     super(props,context)
   }  
 
   render(){
-
     let bgImg = './img/bg.jpg'
 
     let styles = {
@@ -23,7 +22,6 @@ export default class LoginPage extends Component{
         background:'url('+bgImg+') 100% 100%',
       }
     }
-
     return(
       <div style={styles.root}>
         <LoginForm />
@@ -31,3 +29,11 @@ export default class LoginPage extends Component{
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    
+  }
+}
+
+export default connect(mapStateToProps)(LoginPage)

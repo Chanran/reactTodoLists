@@ -1,7 +1,7 @@
 import React,{Component,PropTypes} from 'react'
 import ReactDOM from 'react-dom'
 
-import actions from '../actions'
+import * as actions from '../actions'
 
 import Avatar from '../components/Avatar'
 import UsernameInput from '../components/UsernameInput'
@@ -16,7 +16,7 @@ export default class LoginForm extends Component{
   }
 
   login(){
-    console.log(ReactDOM.findDOMNode(this.usernameInput))
+
   }
 
   render() {

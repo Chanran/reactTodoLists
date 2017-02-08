@@ -4,8 +4,7 @@ import { combineReducers } from 'redux'
 import * as actionTypes from '../constants/ActionTypes'
 import * as todoTypes from '../constants/TodoTypes'
 
-const todoListsInitialState = {
-  todoLists:[
+const todoListsInitialState = [
     {
       type:todoTypes.UNFINISHTODO,
       text:'this is an unfinish todo'
@@ -23,23 +22,19 @@ const todoListsInitialState = {
       text:'double click to delete this todo'
     }
   ]
-}
 
-function todoListsReducer(state = todoListsInitialState,action){
+function todoLists(state = todoListsInitialState,action){
   switch(action.type){
     case actionTypes.NEWTODO:
-      return Object.assign({},state,{
-        todoLists:[
+      return [
           ...state.todoLists,
           {
             type:todoTypes.UNFINISHTODO,
             text:action.text
           }
         ]
-      })
     case actionTypes.FINISHTODO:
-      return Object.assign({},state,{
-        todoLists:state.todoLists.map((todo,index) => {
+      return state.map((todo,index) => {
           if(index === action.index){
             return Object.assign({},todo,{
               type:todoTypes.FINISHTODO
@@ -47,10 +42,8 @@ function todoListsReducer(state = todoListsInitialState,action){
           }
           return todo
         })
-      })
     case actionTypes.REDOTODO:
-      return Object.assign({},state,{
-        todoLists:state.todoLists.map((todo,index) => {
+      return state.map((todo,index) => {
           if(index === action.index){
             return Object.assign({},todo,{
               type:todoTypes.UNFINISHTODO
@@ -58,29 +51,25 @@ function todoListsReducer(state = todoListsInitialState,action){
           }
           return todo
         })
-      })
     case actionTypes.DELETETODO:
-      return Object.assign({},state,{
-        todoLists:state.todoLists.filter((todo,index) => {
+      return state.filter((todo,index) => {
           if(index === action.index){
             return false
           }
           return true
         })
-      })
     default:
       return state
   }
 }
 
 const loginInitialState = {
-  login:{
     username:'',
     password:''
   }
-}
 
-function loginReducer(state = loginInitialState,action){
+
+function login(state = loginInitialState,action){
   switch(action.type){
     case actionTypes.CHANGEUSERNAME:
       return {
@@ -100,8 +89,8 @@ function loginReducer(state = loginInitialState,action){
 }
 
 const todoApp = combineReducers({
-  todoListsReducer,
-  loginReducer
+  todoLists,
+  login
 })
 
 export default todoApp

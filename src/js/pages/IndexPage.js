@@ -1,8 +1,6 @@
 import React,{Component,PropTypes} from 'react'
 import {connect} from 'react-redux'
 
-import AppBar from 'material-ui/AppBar'
-
 import * as actions from '../actions'
 import TodoLists from '../components/TodoLists'
 import InputTodo from '../components/InputTodo'

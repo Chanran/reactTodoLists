@@ -12,8 +12,10 @@ export default class Routes extends Component{
   render(){
     return(
       <Router history={hashHistory}>
-        <Route path='/index' component={IndexPage} />
-        <Route path='/login' component={LoginPage} />
+        <Route path='/index' 
+               component={IndexPage} />
+        <Route path='/login' 
+               component={LoginPage} />
       </Router>
     )
   }
