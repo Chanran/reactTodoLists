@@ -13,7 +13,24 @@ class LoginPage extends Component{
   }  
 
   login(){
-
+    let {username,password} = this.props.login
+    let init = {
+      method:'post',
+      headers:{
+        'Content-Type':'application/json'  
+      },
+      mode:'cors',
+      cache:'default',
+      body:JSON.stringify({username:username,password:password})
+    }
+    fetch('http://localhost:3001/test',init).then((res) => {
+      console.log(res)
+      return res.json()
+    }).then(function(data){
+      console.log(data)
+    }).catch(err => {
+      console.log(err)
+    })
   }
 
   render(){
