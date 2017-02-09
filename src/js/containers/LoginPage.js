@@ -21,7 +21,7 @@ class LoginPage extends Component{
       },
       mode:'cors',
       cache:'default',
-      body:JSON.stringify({username:username,password:password})
+      body:JSON.stringify({username,password})
     }
     fetch('http://localhost:3001/test',init).then((res) => {
       console.log(res)
