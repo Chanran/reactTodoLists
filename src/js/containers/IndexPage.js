@@ -5,8 +5,6 @@ import * as actions from '../actions'
 import TodoLists from '../components/TodoLists'
 import InputTodo from '../components/InputTodo'
 
-import '../../css/todoLists.css'
-
 class IndexPage extends Component{
   constructor(props,context){
     super(props,context)
@@ -14,12 +12,29 @@ class IndexPage extends Component{
 
   render(){
     const {dispatch,todoLists} = this.props
+    const styles = {
+       root:{
+        background:'url(\'./img/bg.jpg\') 100% 100%',
+        display:['-webkit-flex','flex'],
+        WebkitAlignItems:'center',
+        alignItems:'center',
+        WebkitJustifyContent:'center',
+        justifyContent:'center',
+        height:'100%'
+      },
+      container:{
+        height:'300px',
+        background:'white'
+      }
+    }
     return(
-      <div className='todoContainer'>
-        <InputTodo newTodo={text => dispatch(actions.newTodo(text)) } />
-        <TodoLists finishTodo={index => dispatch(actions.finishTodo(index))} 
+      <div style={styles.root}>
+        <div style={styles.container}>
+          <InputTodo newTodo={text => dispatch(actions.newTodo(text)) } />
+          <TodoLists finishTodo={index => dispatch(actions.finishTodo(index))} 
                    redoTodo={index => dispatch(actions.redoTodo(index))}
                    todoLists={todoLists} />
+        </div>
     </div>
     )
   }

@@ -23,7 +23,7 @@ class LoginPage extends Component{
       cache:'default',
       body:JSON.stringify({username,password})
     }
-    fetch('http://localhost:3001/test',init).then((res) => {
+    fetch('/test',init).then((res) => {
       console.log(res)
       return res.json()
     }).then(function(data){

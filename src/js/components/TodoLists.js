@@ -8,8 +8,13 @@ export default class TodoLists extends Component{
 
   render(){
     let {todoLists} = this.props
+    const styles={
+      root:{
+        
+      }
+    }
     return(
-      <div className="todoLists">
+      <div style={styles.root}>
         <ul>
             {todoLists.map((todo,index) =>
               <Todo {...todo}

@@ -11,12 +11,19 @@ import store from './store'
 
 import '../css/index.css'
 
+const styles = {
+  root:{
+    height:'100%',
+    width:'100%'
+  }
+}
+
 ReactDOM.render(
   <Provider store={store}>
     <MuiThemeProvider>
-      <div>
+      <div style={styles.root}>
         <Routes />
-        <Devtools />
+        {/*<Devtools />*/}
       </div>
     </MuiThemeProvider>
   </Provider>,
