@@ -27,7 +27,7 @@ function todoLists(state = todoListsInitialState,action){
   switch(action.type){
     case actionTypes.NEWTODO:
       return [
-          ...state.todoLists,
+          ...state,
           {
             type:todoTypes.UNFINISHTODO,
             text:action.text
