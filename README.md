@@ -21,3 +21,10 @@ npm run dev
 ```
 
 open **[http://localhost:3001/#/login](http://localhost:3001/#/login)** in browser.
+
+## login
+
+```
+username: blue
+password: huimin
+```

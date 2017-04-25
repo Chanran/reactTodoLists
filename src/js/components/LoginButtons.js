@@ -22,19 +22,15 @@ export default class LoginButtons extends Component{
     }
     return (
       <div style={styles.root}>
-        <Link to='/index'>
           <RaisedButton label='登  录' 
                         secondary={true} 
                         style={styles.button1} 
                         type='button' 
                         onClick={this.props.login} />
-        </Link>
-        <Link to='/index'>
           <RaisedButton label='游客登录' 
                         primary={true} 
                         style={styles.button2} 
                         type='button' />
-        </Link>
       </div>
     );
   }

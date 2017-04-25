@@ -1,3 +1,5 @@
+import { hashHistory } from 'react-router'
+
 import * as types from '../constants/ActionTypes'
 import { startLoading, endLoading } from '../actions/loadingActions'
 
@@ -27,6 +29,12 @@ export function login(username, password){
       })
       .then((data) => {
 
+        // 登录成功跳转
+        if (parseInt(data.code) === 200) {
+          hashHistory.push('/index')
+        } else if (parseInt(data.code) === 300) {
+          alert(data.msg)
+        }
         console.log(data)
         
         // 结束loading
