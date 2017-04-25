@@ -1,7 +1,7 @@
 import React,{Component,PropTypes} from 'react'
 import { connect } from 'react-redux'
 
-import * as actions from '../actions'
+import * as actions from '../actions/loginActions'
 import LoginForm from '../components/LoginForm.js'
 
 import '../../css/index.css'
@@ -10,31 +10,15 @@ class LoginPage extends Component{
   constructor(props,context){
     super(props,context)
     this.login = this.login.bind(this)
-  }  
+  }
 
-  login(){
-    let {username,password} = this.props.login
-    let init = {
-      method:'post',
-      headers:{
-        'Content-Type':'application/json'  
-      },
-      mode:'cors',
-      cache:'default',
-      body:JSON.stringify({username,password})
-    }
-    fetch('/test',init).then((res) => {
-      console.log(res)
-      return res.json()
-    }).then(function(data){
-      console.log(data)
-    }).catch(err => {
-      console.log(err)
-    })
+  login() {
+    let { login, confirmLogin } = this.props
+    confirmLogin(login.username, login.password)
   }
 
   render(){
-    const {dispatch} = this.props
+    const { changeUsername, changePassword } = this.props
 
     let bgImg = './img/bg.jpg'
     let styles = {
@@ -48,8 +32,8 @@ class LoginPage extends Component{
     }
     return(
       <div style={styles.root}>
-        <LoginForm changeUsername={ (username) => dispatch(actions.changeUsername(username)) }
-                   changePassword={ (password) => dispatch(actions.changePassword(password)) }
+        <LoginForm changeUsername={changeUsername}
+                   changePassword={changePassword}
                    login={this.login} />
       </div>
     )
@@ -62,4 +46,12 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps)(LoginPage)
+function mapDispatchToProps(dispatch){
+  return {
+    changeUsername: (username) => dispatch(actions.changeUsername(username)),
+    changePassword: (password) => dispatch(actions.changePassword(password)),
+    confirmLogin: (username, password) => dispatch(actions.login(username, password))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage)

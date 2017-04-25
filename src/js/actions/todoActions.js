@@ -1,4 +1,4 @@
-import * as types from './constants/ActionTypes'
+import * as types from '../constants/ActionTypes'
 
 export function newTodo(text){
   return {
@@ -25,19 +25,5 @@ export function deleteTodo(index){
   return {
     type:types.DELETETODO,
     index
-  }
-}
-
-export function changeUsername(username){
-  return {
-    type:types.CHANGEUSERNAME,
-    username
-  }
-}
-
-export function changePassword(password){
-  return {
-    type:types.CHANGEPASSWORD,
-    password
   }
 }

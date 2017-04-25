@@ -1,7 +1,4 @@
-import React,{Component,PropTypes} from 'react'
-import ReactDOM from 'react-dom'
-
-import * as actions from '../actions'
+import React, { Component } from 'react'
 
 import Avatar from './Avatar'
 import UsernameInput from './UsernameInput'

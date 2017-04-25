@@ -15,7 +15,7 @@ app.get('/',(req,res) => {
   res.sendFile(path.resolve(__dirname,'src/html','index.html'));
 })
 
-app.post('/test',(req,res) => {
+app.post('/login',(req,res) => {
   let data = req.body
   console.log(data)
   res.json({status:'success',msg:'Well Done',data})
