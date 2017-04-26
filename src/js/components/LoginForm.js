@@ -28,7 +28,8 @@ export default class LoginForm extends Component{
         <UsernameInput changeUsername={ this.props.changeUsername } />
         <PasswordInput changePassword={ this.props.changePassword } />
         <LoginTips />
-        <LoginButtons login={this.props.login} />
+        <LoginButtons login={this.props.login}
+                      guestLogin={this.props.guestLogin} />
       </div>
     )
   }

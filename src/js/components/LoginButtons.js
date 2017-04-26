@@ -1,5 +1,5 @@
-import React,{Component,PropTypes} from 'react'
-import {Link} from 'react-router'
+import React,{ Component } from 'react'
+import { Link } from 'react-router'
 
 import RaisedButton from 'material-ui/RaisedButton'
 
@@ -27,10 +27,11 @@ export default class LoginButtons extends Component{
                         style={styles.button1} 
                         type='button' 
                         onClick={this.props.login} />
-          <RaisedButton label='游客登录' 
-                        primary={true} 
-                        style={styles.button2} 
-                        type='button' />
+            <RaisedButton label='游客登录' 
+                          primary={true} 
+                          style={styles.button2} 
+                          type='button'
+                          onClick={this.props.guestLogin} />
       </div>
     );
   }

@@ -1,7 +1,9 @@
 import React,{Component,PropTypes} from 'react'
 import { connect } from 'react-redux'
+import { hashHistory } from 'react-router'
 
 import * as actions from '../actions/loginActions'
+import { setStorage } from '../utils/storage'
 import LoginForm from '../components/LoginForm.js'
 
 import '../../css/index.css'
@@ -15,6 +17,13 @@ class LoginPage extends Component{
   login() {
     let { login, confirmLogin } = this.props
     confirmLogin(login.username, login.password)
+  }
+
+  guestLogin() {
+    // 游客登录
+    setStorage('isAuth', -1)
+    // 跳转到todoLists
+    hashHistory.push('/index')
   }
 
   render(){
@@ -34,7 +43,8 @@ class LoginPage extends Component{
       <div style={styles.root}>
         <LoginForm changeUsername={changeUsername}
                    changePassword={changePassword}
-                   login={this.login} />
+                   login={this.login}
+                   guestLogin={this.guestLogin} />
       </div>
     )
   }
