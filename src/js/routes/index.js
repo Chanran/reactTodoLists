@@ -3,24 +3,41 @@ import {Router,Route,hashHistory,IndexRoute} from 'react-router'
 
 import IndexPage from '../containers/IndexPage'
 import LoginPage from '../containers/LoginPage'
-import NotFound from '../components/NotFound'
+import WelcomePage from '../components/Welcome'
+import NotFoundPage from '../components/NotFound'
+
+import { isAuth } from '../utils/auth'
 
 export default class Routes extends Component{
   constructor(props, context) {
     super(props, context)
+    this.checkAuth = this.checkAuth.bind(this)
   }
   
+  checkAuth(nextState, replaceState) {
+    // 未登录则默认跳转到/login页
+    if (!isAuth()) {
+      replaceState(
+        {
+          pathname: '/login'
+        }
+      )
+    }
+  }
+
   render(){
     return(
       <Router history={hashHistory}>
         <Route path="/">
-          <IndexRoute component={IndexPage} />
-          <Route path='/index' 
-                component={IndexPage} />
-          <Route path='/login' 
-                component={LoginPage} />
+          <IndexRoute component={WelcomePage} />
+          <Route path='index' 
+                 component={IndexPage}
+                 onEnter={this.checkAuth} />
+          <Route path='login' 
+                 component={LoginPage} />
         </Route>
-        <Route path="*" component={NotFound} />
+        {/* 404页 */}
+        <Route path="*" component={NotFoundPage} />
       </Router>
     )
   }

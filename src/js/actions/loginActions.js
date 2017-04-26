@@ -2,6 +2,7 @@ import { hashHistory } from 'react-router'
 
 import * as types from '../constants/ActionTypes'
 import { startLoading, endLoading } from '../actions/loadingActions'
+import { setAuth } from '../utils/auth'
 
 export function login(username, password){
   let postData = {
@@ -31,6 +32,10 @@ export function login(username, password){
 
         // 登录成功跳转
         if (parseInt(data.code) === 200) {
+
+          // 设置用户名称
+          setAuth(data.username)
+          // 跳转到todoLists 
           hashHistory.push('/index')
         } else if (parseInt(data.code) === 300) {
           alert(data.msg)
