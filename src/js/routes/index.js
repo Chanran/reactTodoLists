@@ -34,7 +34,8 @@ export default class Routes extends Component{
                  component={IndexPage}
                  onEnter={this.checkAuth} />
           <Route path='login' 
-                 component={LoginPage} />
+                 component={LoginPage}
+                  />
         </Route>
         {/* 404页 */}
         <Route path="*" component={NotFoundPage} />

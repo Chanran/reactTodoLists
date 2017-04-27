@@ -34,21 +34,29 @@ export default class InputTodo extends Component{
   render(){
     const styles = {
       root:{
-        
+        marginBottom: '10px'
+      },
+      textField: {
+        display: 'inline-block',
+        width: '200px'
+      },
+      button: {
+        marginLeft: '10px'
       }
     }
 
     return (
       <div style={styles.root}>
         <TextField floatingLabelText="添加新事务"
-                   hintText="事务会保存下来，登录后就可以看见"
-                   className='addTodoInput'
+                   hintText="登录后可见"
+                   style={styles.textField}
                    ref={(ref) => this.textField = ref}
                    autoFocus='true' 
                    onKeyDown={this.addTodoKeydown} />
         <RaisedButton primary={true}
-                label='添 加'
-                onClick={this.addTodoClick} />
+                      label='添 加'
+                      style={styles.button}
+                      onClick={this.addTodoClick} />
       </div>
     )
   }

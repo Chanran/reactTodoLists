@@ -14,16 +14,20 @@ class IndexPage extends Component{
     const {dispatch,todoLists} = this.props
     const styles = {
        root:{
-        background:'url(\'./img/bg.jpg\') 100% 100%',
-        display:['-webkit-flex','flex'],
-        WebkitAlignItems:'center',
+        display: 'flex',
         alignItems:'center',
-        WebkitJustifyContent:'center',
+        WebkitAlignItems:'center',
         justifyContent:'center',
+        WebkitJustifyContent:'center',
+        background:'url(\'./img/bg.jpg\') no-repeat',
+        backgroundSize: 'cover',
         height:'100%'
       },
       container:{
+        padding: '30px',
+        width: '300px',
         height:'300px',
+        borderRadius: '5px',
         background:'white'
       }
     }

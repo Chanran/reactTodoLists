@@ -14,12 +14,17 @@ export default class Todo extends Component{
   }
 
   render(){
+
+    const styles={
+      li: {
+        textDecoration:this.props.type === todoTypes.FINISHTODO?'line-through':'none',
+        cursor:'pointer',
+      }
+    }
+
     return (
-      <li onClick={(e) => this.handleFinishTodo(e,this)} 
-          style={{
-            textDecoration:this.props.type === todoTypes.FINISHTODO?'line-through':'none',
-            cursor:'pointer'
-          }}>
+      <li onClick={(e) => this.handleFinishTodo(e,this)}
+          style={styles.li}>
           {this.props.text}
       </li>
     )
