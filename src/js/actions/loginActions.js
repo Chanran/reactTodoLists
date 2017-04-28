@@ -32,7 +32,7 @@ export function login(username, password){
 
         // 登录成功跳转
         if (parseInt(data.code) === 200) {
-
+          console.log(data)
           // 设置用户名称
           setAuth(data.username)
           // 跳转到todoLists 
