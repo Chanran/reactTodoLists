@@ -34,7 +34,7 @@ export function login(username, password){
         if (parseInt(data.code) === 200) {
           console.log(data)
           // 设置用户名称
-          setAuth(data.username)
+          setAuth(data.token)
           // 跳转到todoLists 
           hashHistory.push('/index')
         } else if (parseInt(data.code) === 300) {
