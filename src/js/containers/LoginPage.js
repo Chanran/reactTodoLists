@@ -5,6 +5,7 @@ import { hashHistory } from 'react-router'
 import * as actions from '../actions/loginActions'
 import { setStorage } from '../utils/storage'
 import LoginForm from '../components/LoginForm.js'
+import Loading from '../components/Loading'
 
 import '../../css/index.css'
 
@@ -41,6 +42,7 @@ class LoginPage extends Component{
     }
     return(
       <div style={styles.root}>
+        <Loading />
         <LoginForm changeUsername={changeUsername}
                    changePassword={changePassword}
                    login={this.login}

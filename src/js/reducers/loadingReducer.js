@@ -5,7 +5,7 @@ const initialState = {
 }
 
 
-export default function login(state = initialState.isLoading,action){
+export default function isLoading(state = initialState.isLoading,action){
   switch(action.type){
     case actionTypes.STARTLOADING:
       return true

@@ -8,6 +8,7 @@ import { logout } from '../utils/auth'
 import * as actions from '../actions/todoActions'
 import TodoLists from '../components/TodoLists'
 import InputTodo from '../components/InputTodo'
+import Loading from '../components/Loading'
 
 class IndexPage extends Component{
   constructor(props,context){
@@ -23,7 +24,7 @@ class IndexPage extends Component{
   render(){
     const {dispatch,todoLists} = this.props
     const styles = {
-       root:{
+      root:{
         display: 'flex',
         alignItems:'center',
         WebkitAlignItems:'center',
@@ -35,8 +36,8 @@ class IndexPage extends Component{
       },
       container:{
         position: 'relative',
-        padding: '30px',
-        width: '300px',
+        padding: '20px',
+        width: '280px',
         height:'300px',
         borderRadius: '5px',
         background:'white'
@@ -52,6 +53,7 @@ class IndexPage extends Component{
     }
     return(
       <div style={styles.root}>
+        <Loading />
         <div style={styles.container}>
           <NavigationClose style={styles.close}
                            onClick={this.close} />

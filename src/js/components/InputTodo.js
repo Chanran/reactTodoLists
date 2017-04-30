@@ -38,7 +38,7 @@ export default class InputTodo extends Component{
       },
       textField: {
         display: 'inline-block',
-        width: '200px'
+        width: '180px'
       },
       button: {
         marginLeft: '10px'

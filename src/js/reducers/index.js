@@ -3,12 +3,12 @@ import { combineReducers } from 'redux'
 
 import todoLists from './todoReducer'
 import login from './loginReducer'
-import loading from './loadingReducer'
+import isLoading from './loadingReducer'
 
 const todoApp = combineReducers({
   todoLists,
   login,
-  loading
+  isLoading
 })
 
 export default todoApp

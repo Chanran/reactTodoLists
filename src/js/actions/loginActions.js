@@ -47,6 +47,10 @@ export function login(username, password){
 
       })
       .catch(err => {
+
+        // 结束loading
+        dispatch(endLoading());
+
         console.log(err)
       })
   }
