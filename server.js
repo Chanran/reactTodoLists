@@ -59,6 +59,29 @@ app.post('/login', (req, res) => {
   }
 })
 
+app.get('/checktoken', (req, res) => {
+  const token = req.query.token || 
+                req.params.token || 
+                req.body.token ||
+                req.headers['x-access-token']
+  // jwt secret
+  const jwtSecret = fs.readFileSync('./config/private.key')
+
+  jwt.verify(token, jwtSecret, function(err, decoded) {
+    if (err) {
+      return res.json({
+        msg: '验证token失败',
+        code : '403'
+      })
+    } else {
+      return res.json({
+        msg: '验证token成功',
+        code: '200',
+      })
+    }
+  })
+})
+
 // 登出
 app.get('/logout', (req, res) => {
   res.json({
