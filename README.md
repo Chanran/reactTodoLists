@@ -36,3 +36,7 @@ open **[http://localhost:3001/#/](http://localhost:3001/#/)** in browser.
 username: blue
 password: huimin
 ```
+
+## LICENSE
+
+[MIT](./LICENSE)
